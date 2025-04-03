@@ -67,7 +67,7 @@ def dijkstra(nodes, nbrs, cost, start_idx, end_idx):
 
 result = (np.inf, [])
 while result == (np.inf, []):
-    response = requests.get("https://github.com/theshiva004/arktask/blob/main/maze.png", stream=True).raw
+    response = requests.get("https://github.com/theshiva004/arktask/raw/main/maze.png", stream=True).raw
     image_array = np.asarray(bytearray(response.read()), dtype=np.uint8)
 
     img=cv2.imdecode(image_array, cv2.IMREAD_GRAYSCALE)
