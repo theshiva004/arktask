@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 import math
+import requests
 
 def validity(p1, p2, maze):
     x1, y1 = p1
