@@ -67,12 +67,11 @@ def dijkstra(nodes, nbrs, cost, start_idx, end_idx):
 
 result = (np.inf, [])
 while result == (np.inf, []):
-   response = requests.get("https://raw.githubusercontent.com/akshatkkaushik/ARK-Perception-Task/refs/heads/main/maze.png", stream=True).raw
-image_array = np.asarray(bytearray(response.read()), dtype=np.uint8)
+    response = requests.get("https://github.com/theshiva004/arktask/blob/main/maze.png", stream=True).raw
+    image_array = np.asarray(bytearray(response.read()), dtype=np.uint8)
 
-img=cv2.imdecode(image_array, cv2.IMREAD_GRAYSCALE)
-    
-    img = cv2.imread("maze.png", cv2.IMREAD_GRAYSCALE)
+    img=cv2.imdecode(image_array, cv2.IMREAD_GRAYSCALE)
+
     _, maze = cv2.threshold(img, 180, 255, cv2.THRESH_BINARY_INV)
     maze2 = cv2.cvtColor(maze, cv2.COLOR_GRAY2BGR)
     
