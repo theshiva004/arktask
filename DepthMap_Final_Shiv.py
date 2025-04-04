@@ -43,10 +43,6 @@ def normalize_disparity(disparity_map):
     normalized = 255 * (disparity_map - min_val) / (max_val - min_val)
     return normalized.astype(np.uint8)
 
-def create_heatmap(disparity_map):
-    heatmap = cv2.applyColorMap(disparity_map, cv2.COLORMAP_JET)
-    return heatmap
-
 def main():
     response1 = requests.get("https://github.com/theshiva004/arktask/raw/main/left.png", stream=True).raw
     image_array1 = np.asarray(bytearray(response1.read()), dtype=np.uint8)
@@ -64,7 +60,7 @@ def main():
     
     disparity_map = disparity(gray_left, gray_right)
     normalized_disp = normalize_disparity(disparity_map)
-    heatmap = create_heatmap(normalized_disp)
+    heatmap = cv2.applyColorMap(disparity_map, cv2.COLORMAP_JET)
     
     plt.figure(figsize=(12, 6))
     plt.subplot(2, 2, 1)
